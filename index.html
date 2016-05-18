@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
   <title>Tomato</title>
   <style>
-    body {padding: 0;margin: 0;background: #ccc;}
+    body {padding: 0;margin: 0;background: #ccc;font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;}
     #customAlert {width: 100vw;height: 100vh;position: absolute;top:0;left:0;z-index: 3;}
     #customAlert p {text-align: center;line-height: 100vh;font-size: 30px;margin: 0}
     #bg {width: 100%;height: 100vh;position: absolute;top:0;left:0;z-index: 1;overflow: hidden}
     #bg img {width:auto;height: 100%}
-    #counter {position: absolute;bottom: 0;left: 0;z-index: 2;opacity: 0.3;background: #fff;padding:10px;width:200px}
+    #counterDisplay {position: absolute;bottom: 0;left: 0;z-index: 2;opacity: 0.3;background: #fff;padding:10px;}
     @media only screen and (max-width:767px) {
-      iframe {max-width: none;height: 100vh}
+
     }
   </style>
 </head>
 <body>
 <div id="customAlert" style="display: none;"></div>
 <div id="bg"><img src="https://unsplash.it/1920/1080/?random" /></div>
-<div id="counter">
+<div id="counterDisplay">
   <div id="focusCountdown"></div>
   <div id="relaxCountdown"></div>
 </div>
@@ -41,13 +41,13 @@
 
     function initialFocusCountdown(){
       x = document.getElementById("focusCountdown");
-      x.innerHTML = focusCountdown/60;
+      x.innerHTML = '專注&nbsp;' + Math.floor(focusCountdown/60) + ':' + (focusCountdown/60-Math.floor(focusCountdown/60))*60;
       focusCountdown --;
       focusCountdownId = window.setInterval(focusCountdownFunc,1000);
     }
 
     function focusCountdownFunc(){
-      x.innerHTML = '專注&nbsp;' + focusCountdown/60;
+      x.innerHTML = '專注&nbsp;' + Math.floor(focusCountdown/60) + ':' + (focusCountdown/60-Math.floor(focusCountdown/60))*60;
       if (focusCountdown == 3){
         customAlert('#fff','#000','該休息囉～');
         setTimeout(function () {
@@ -61,13 +61,13 @@
 
     function initialRelaxCountdown() {
       y = document.getElementById("relaxCountdown");
-      y.innerHTML = relaxCountdown/60;
+      y.innerHTML = '休息&nbsp;' + Math.floor(relaxCountdown/60) + ':' + (relaxCountdown/60-Math.floor(relaxCountdown/60))*60;
       relaxCountdown --;
       relaxCountdownId = window.setInterval(relaxCountdownFunc,1000);
     }
 
     function relaxCountdownFunc(){
-      y.innerHTML = '休息&nbsp;' + relaxCountdown/60;
+      y.innerHTML = '休息&nbsp;' + Math.floor(relaxCountdown/60) + ':' + (relaxCountdown/60-Math.floor(relaxCountdown/60))*60;
       if (relaxCountdown == 3){
         customAlert('#000','#fff','該工作囉～');
         setTimeout(function () {
