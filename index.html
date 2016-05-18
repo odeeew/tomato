@@ -8,7 +8,8 @@
     body {padding: 0;margin: 0;background: #ccc;}
     #customAlert {width: 100vw;height: 100vh;position: absolute;top:0;left:0;z-index: 3;}
     #customAlert p {text-align: center;line-height: 100vh;font-size: 30px;margin: 0}
-    iframe {max-width: 100vw;max-height: 100vh;position: absolute;top:0;left:0;z-index: 1;}
+    #bg {width: 100%;height: 100vh;position: absolute;top:0;left:0;z-index: 1;overflow: hidden}
+    #bg img {width:auto;height: 100%}
     #counter {position: absolute;bottom: 0;left: 0;z-index: 2;opacity: 0.3;background: #fff;padding:10px;width:200px}
     @media only screen and (max-width:767px) {
       iframe {max-width: none;height: 100vh}
@@ -17,13 +18,7 @@
 </head>
 <body>
 <div id="customAlert" style="display: none;"></div>
-<div class='pixels-photo'>
-  <p>
-    <img src='https://drscdn.500px.org/photo/2929607/m%3D900/168c25e605cb922ad6da10b7a71a4fd9' alt='Siren's Song by Paul Morgan on 500px.com'>
-  </p>
-  <a href='https://500px.com/photo/2929607/siren-s-song-by-paul-morgan' alt='Siren's Song by Paul Morgan on 500px.com'></a>
-</div>
-<script type='text/javascript' src='https://500px.com/embed.js'></script>
+<div id="bg"><img src="https://unsplash.it/1920/1080/?random" /></div>
 <div id="counter">
   <div id="focusCountdown"></div>
   <div id="relaxCountdown"></div>
@@ -34,12 +29,15 @@
 
     //get setting from url
     var u = window.location.href,
-            setting = u.split('?', 2)[1],
-            focusMin = setting.split('&',2)[0],
-            relaxMin = setting.split('&',2)[1],
-            focusCountdown = focusMin * 60,
-            relaxCountdown = relaxMin * 60,
-            focusCountdownId,relaxCountdownId,x,y;
+        setting = u.split('?', 2)[1],
+        focusMin = setting.split('&',2)[0],
+        relaxMin = setting.split('&',2)[1],
+        focusCountdown = focusMin * 60,
+        relaxCountdown = relaxMin * 60,
+        focusCountdownId,
+        relaxCountdownId,
+        x,
+        y;
 
     function initialFocusCountdown(){
       x = document.getElementById("focusCountdown");
@@ -52,8 +50,8 @@
       x.innerHTML = '專注&nbsp;' + focusCountdown/60;
       if (focusCountdown == 3){
         customAlert('#fff','#000','該休息囉～');
-        clearInterval(focusCountdownId);
         setTimeout(function () {
+          clearInterval(focusCountdownId);
           initialRelaxCountdown();
         },3000);
       }
@@ -72,7 +70,10 @@
       y.innerHTML = '休息&nbsp;' + relaxCountdown/60;
       if (relaxCountdown == 3){
         customAlert('#000','#fff','該工作囉～');
-        clearInterval(relaxCountdownId);
+        setTimeout(function () {
+          clearInterval(relaxCountdownId);
+        },3000);
+
       }
       relaxCountdown --;
     }
