@@ -30,9 +30,9 @@
     //get setting from url
     var u = window.location.href,
         setting = u.split('?', 2)[1],
-        focusMin = setting.split('&',2)[0],
+        focusMin = parseInt(setting.split('&',2)[0]),
         relaxMin = setting.split('&',2)[1],
-        focusCountdown = focusMin * 60,
+        focusCountdown = focusMin * 60,//分鐘數轉秒數
         relaxCountdown = relaxMin * 60,
         focusCountdownId,
         relaxCountdownId,
@@ -41,13 +41,15 @@
 
     function initialFocusCountdown(){
       x = document.getElementById("focusCountdown");
-      x.innerHTML = '專注&nbsp;' + Math.floor(focusCountdown/60) + ':' + Math.ceil((focusCountdown/60-Math.floor(focusCountdown/60))*60);
+      x.innerHTML = '專注&nbsp;' + focusMin + ':00';
       focusCountdown --;
       focusCountdownId = window.setInterval(focusCountdownFunc,1000);
     }
 
     function focusCountdownFunc(){
-      x.innerHTML = '專注&nbsp;' + Math.floor(focusCountdown/60) + ':' + Math.ceil((focusCountdown/60-Math.floor(focusCountdown/60))*60);
+      var  leftFocusM = Math.floor(focusCountdown / 60),
+            leftFocusS = focusCountdown - leftFocusM * 60;
+      x.innerHTML = '專注&nbsp;' + leftFocusM + ':' + leftFocusS;
       if (focusCountdown == 3){
         customAlert('#fff','#000','該休息囉～');
         setTimeout(function () {
@@ -61,13 +63,15 @@
 
     function initialRelaxCountdown() {
       y = document.getElementById("relaxCountdown");
-      y.innerHTML = '休息&nbsp;' + Math.floor(relaxCountdown/60) + ':' + Math.ceil((relaxCountdown/60-Math.floor(relaxCountdown/60))*60);
+      y.innerHTML = '休息&nbsp;' + relaxMin + ':00';
       relaxCountdown --;
       relaxCountdownId = window.setInterval(relaxCountdownFunc,1000);
     }
 
     function relaxCountdownFunc(){
-      y.innerHTML = '休息&nbsp;' + Math.floor(relaxCountdown/60) + ':' + Math.ceil((relaxCountdown/60-Math.floor(relaxCountdown/60))*60);
+      var leftRelaxM = Math.floor(relaxCountdown / 60),
+              leftRelaxS = relaxCountdown - leftRelaxM * 60;
+      y.innerHTML = '休息&nbsp;' + leftRelaxM + ':' + leftRelaxS;
       if (relaxCountdown == 3){
         customAlert('#000','#fff','該工作囉～');
         setTimeout(function () {
