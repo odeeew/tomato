@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
   <title>Tomato</title>
   <style>
-    body {padding: 0;margin: 0;background: #ccc;font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;}
+    body {padding: 0;margin: 0;background: #ccc;}
     #customAlert {width: 100vw;height: 100vh;position: absolute;top:0;left:0;z-index: 3;}
     #customAlert p {text-align: center;line-height: 100vh;font-size: 30px;margin: 0}
     #bg {width: 100%;height: 100vh;position: relative;z-index: 1;background: url("https://unsplash.it/1920/1080/?random");background-size: cover}
@@ -79,6 +79,11 @@
 
     function customAlert(bgColor,textColor,text) {
       $('#customAlert').css({'background-color':bgColor,'color':textColor}).html('<p>' + text + '</p>');
+      if (navigator.vibrate){
+        navigator.vibrate(1000);
+      }else if (navigator.webkitVibrate){
+        navigator.webkitVibrate(1000);
+      }
       function flash(){
         $('#customAlert').fadeIn(500).fadeOut(500);
       }
