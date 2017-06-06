@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
   <title>Tomato</title>
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
   <style>
     body {padding: 0;margin: 0;background: #ccc;font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;}
     #customAlert {width: 100vw;height: 100vh;position: absolute;top:0;left:0;z-index: 3;}
     #customAlert p {text-align: center;line-height: 100vh;font-size: 30px;margin: 0}
     #bg {width: 100vw;height: 100vh;position: relative;z-index: 1;background: url("https://source.unsplash.com/1920x1080/?nature");background-size: cover}
     #counterDisplay {position: absolute;bottom: 0;left: 0;z-index: 2;opacity: 0.3;background: #fff;padding:10px;}
-      #time {position:absolute;color:#fff;width: 100vw;height: 100vh;line-height: 100vh;text-align: center;top:0;z-index: 4;font-size: 100px;background-color: rgba(0,0,0,0.1)}
+      #time {position:absolute;color:#fff;width: 100vw;height: 100vh;line-height: 100vh;text-align: center;top:0;z-index: 4;font-size: 100px;background-color: rgba(0,0,0,0.1);font-family: 'El Messiri'}
   </style>
 </head>
 <body>
@@ -28,7 +29,7 @@
     //show now time
     function renewTime(){
 	    var now = new Date(),
-		    hh = (now.getHours() < 10 ? '0' : '') + now.getHours(),
+		    hh = (now.getHours() < 10 ? '0' : '') + now.getHours(),//前面補0
 		    mm = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
 //            ss = now.getSeconds();
 	    document.getElementById('time').innerHTML = hh + ':' + mm;
