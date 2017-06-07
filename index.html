@@ -1,111 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
-  <title>Tomato</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <title>Tomato</title>
     <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
-  <style>
-    body {padding: 0;margin: 0;background: #ccc;font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;}
-    #customAlert {width: 100vw;height: 100vh;position: absolute;top:0;left:0;z-index: 3;}
-    #customAlert p {text-align: center;line-height: 100vh;font-size: 30px;margin: 0}
-    #bg {width: 100vw;height: 100vh;position: relative;z-index: 1;background: url("https://source.unsplash.com/collection/317099/1920x1080");background-size: cover}
-    #counterDisplay {position: absolute;bottom: 0;left: 0;z-index: 2;opacity: 0.3;background: #fff;padding:10px;}
-      #time {position:absolute;color:rgba(255,255,255,0.8);width: 100vw;height: 100vh;line-height: 100vh;text-align: center;top:0;z-index: 4;font-size: 120px;background-color: rgba(0,0,0,0.1);font-family: 'El Messiri';text-shadow: rgba(0,0,0,0.5) 1px 1px 1px}
-  </style>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: #ccc;
+            font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
+        }
+
+        #customAlert {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        #customAlert p {
+            text-align: center;
+            line-height: 100vh;
+            font-size: 30px;
+            margin: 0
+        }
+
+        #bg {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+            background: url("https://source.unsplash.com/collection/317099/1920x1080");
+            background-size: cover
+        }
+
+        #counterDisplay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            background: #fff;
+            padding: 10px;
+        }
+
+        #clock {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            width: 100vw;
+            height: 100vh;
+            line-height: 100vh;
+            text-align: center;
+            top: 0;
+            z-index: 4;
+            font-size: 120px;
+            background-color: rgba(0, 0, 0, 0.1);
+            font-family: 'El Messiri';
+            text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px
+        }
+    </style>
 </head>
 <body>
 <div id="customAlert" style="display: none;"></div>
 <div id="bg"></div>
-<div id="time"></div>
+<div id="clock"></div>
 <div id="counterDisplay">
-  <div id="focusCountdown"></div>
-  <div id="relaxCountdown"></div>
+    <div id="focusCountdown"></div>
+    <div id="relaxCountdown"></div>
 </div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
-  $(document).ready(function () {
+	$(document).ready(function () {
 
-    //show now time
-    function renewTime(){
-	    var now = new Date(),
-		    hh = (now.getHours() < 10 ? '0' : '') + now.getHours(),//前面補0
-		    mm = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+		//show now time
+		function renewTime() {
+			var now = new Date(),
+				hh = (now.getHours() < 10 ? '0' : '') + now.getHours(),//前面補0
+				mm = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
 //            ss = now.getSeconds();
-	    document.getElementById('time').innerHTML = hh + ':' + mm;
-    }
-    setInterval(renewTime,1000);//update every second
+			document.getElementById('clock').innerHTML = hh + ':' + mm;
+		}
+		setInterval(renewTime, 1000);//update every second
 
-    //get setting from url
-    var u = window.location.href,
-        setting = u.split('?', 2)[1],
-        focusMin = parseInt(setting.split('&',2)[0]),
-        relaxMin = setting.split('&',2)[1],
-        focusCountdown = focusMin * 60,//分鐘數轉秒數
-        relaxCountdown = relaxMin * 60,
-        focusCountdownId,
-        relaxCountdownId,
-        x,
-        y;
+		//get setting from url
+		var u = window.location.href,
+			setting = u.split('?', 2)[1],
+			focusMin = parseInt(setting.split('&', 2)[0]),
+			relaxMin = setting.split('&', 2)[1],
+			focusCountdown = focusMin * 60,//分鐘數轉秒數
+			relaxCountdown = relaxMin * 60,
+			focusCountdownId,
+			relaxCountdownId,
+			x,
+			y;
 
-    function initialFocusCountdown(){
-      x = document.getElementById("focusCountdown");
-      x.innerHTML = '專注&nbsp;' + focusMin + ':00';
-      focusCountdown --;
-      focusCountdownId = window.setInterval(focusCountdownFunc,1000);
-    }
+		function initialFocusCountdown() {
+			x = document.getElementById("focusCountdown");
+			x.innerHTML = '專注&nbsp;' + focusMin + ':00';
+			focusCountdown--;
+			focusCountdownId = window.setInterval(focusCountdownFunc, 1000);
+		}
 
-    function focusCountdownFunc(){
-      var  leftFocusM = Math.floor(focusCountdown / 60),
-            leftFocusS = focusCountdown - leftFocusM * 60;
-      x.innerHTML = '專注&nbsp;' + leftFocusM + ':' + leftFocusS;
-      if (focusCountdown === 3){
-        customAlert('#fff','#000','該休息囉～');
-        setTimeout(function () {
-          clearInterval(focusCountdownId);
-          initialRelaxCountdown();
-        },3000);
-      }
-      focusCountdown --;
-    }
-    initialFocusCountdown();
+		function focusCountdownFunc() {
+			var leftFocusM = Math.floor(focusCountdown / 60),
+				leftFocusS = focusCountdown - leftFocusM * 60;
+			x.innerHTML = '專注&nbsp;' + leftFocusM + ':' + leftFocusS;
+			if (focusCountdown === 3) {
+				customAlert('#fff', '#000', '該休息囉～');
+				setTimeout(function () {
+					clearInterval(focusCountdownId);
+					initialRelaxCountdown();
+				}, 3000);
+			}
+			focusCountdown--;
+		}
 
-    function initialRelaxCountdown() {
-      y = document.getElementById("relaxCountdown");
-      y.innerHTML = '休息&nbsp;' + relaxMin + ':00';
-      relaxCountdown --;
-      relaxCountdownId = window.setInterval(relaxCountdownFunc,1000);
-    }
+		initialFocusCountdown();
 
-    function relaxCountdownFunc(){
-      var leftRelaxM = Math.floor(relaxCountdown / 60),
-              leftRelaxS = relaxCountdown - leftRelaxM * 60;
-      y.innerHTML = '休息&nbsp;' + leftRelaxM + ':' + leftRelaxS;
-      if (relaxCountdown === 3){
-        customAlert('#000','#fff','該工作囉～');
-        setTimeout(function () {
-          clearInterval(relaxCountdownId);
-        },3000);
-      }
-      relaxCountdown --;
-    }
+		function initialRelaxCountdown() {
+			y = document.getElementById("relaxCountdown");
+			y.innerHTML = '休息&nbsp;' + relaxMin + ':00';
+			relaxCountdown--;
+			relaxCountdownId = window.setInterval(relaxCountdownFunc, 1000);
+		}
 
-    function customAlert(bgColor,textColor,text) {
-      $('#customAlert').css({'background-color':bgColor,'color':textColor}).html('<p>' + text + '</p>');
-      if (navigator.vibrate){
-        navigator.vibrate(1000);
-      }else if (navigator.webkitVibrate){
-        navigator.webkitVibrate(1000);
-      }
-      function flash(){
-        $('#customAlert').fadeIn(500).fadeOut(500);
-      }
-      var flashId = window.setInterval(flash,500);
-      setTimeout(function () {
-        clearInterval(flashId);
-      },3000);
-    }
-  });
+		function relaxCountdownFunc() {
+			var leftRelaxM = Math.floor(relaxCountdown / 60),
+				leftRelaxS = relaxCountdown - leftRelaxM * 60;
+			y.innerHTML = '休息&nbsp;' + leftRelaxM + ':' + leftRelaxS;
+			if (relaxCountdown === 3) {
+				customAlert('#000', '#fff', '該工作囉～');
+				setTimeout(function () {
+					clearInterval(relaxCountdownId);
+				}, 3000);
+			}
+			relaxCountdown--;
+		}
+
+		function customAlert(bgColor, textColor, text) {
+			$('#customAlert').css({'background-color': bgColor, 'color': textColor}).html('<p>' + text + '</p>');
+			if (navigator.vibrate) {
+				navigator.vibrate(1000);
+			} else if (navigator.webkitVibrate) {
+				navigator.webkitVibrate(1000);
+			}
+			function flash() {
+				$('#clock').fadeOut(500);
+				$('#customAlert').fadeIn(500).fadeOut(500);
+			}
+
+			var flashId = window.setInterval(flash, 500);
+			setTimeout(function () {
+				clearInterval(flashId);
+			}, 3000);
+
+			setTimeout(function() {
+				$('#clock').fadeIn(500);
+			}, 6000);
+		}
+	});
 </script>
 </body>
 </html>
