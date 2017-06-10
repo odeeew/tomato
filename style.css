@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #ccc;
+    font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
+    background: url("https://source.unsplash.com/collection/148982/1920x1080");
+}
+#mainContent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#clock {
+    color: rgba(255, 255, 255, 0.7);
+    width: 100vw;
+    height: 150px;
+    text-align: center;
+    z-index: 4;
+    font-size: 130px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    font-family: 'El Messiri';
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px
+}
+
+#search {
+    width: 100vw;
+    text-align: center;
+    border: 0;
+    z-index: 5;
+    font-size: 30px;
+    font-weight: lighter;
+    color: rgba(0,0,0,0);/*把游標和文字隱藏*/
+    text-shadow: 0px 0px 0px rgba(255,255,255,0.6);/*用陰影設定文字的顏色*/
+    -webkit-text-fill-color: transparent;
+    background-color: transparent;
+}
+#search:focus {
+    border: 0;
+    outline: none;
+}
+
+#customAlert {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#customAlert p {
+    text-align: center;
+    line-height: 100vh;
+    font-size: 30px;
+    margin: 0
+}
+
+#counterDisplay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0.3;
+    background: #fff;
+    padding: 10px;
+}
