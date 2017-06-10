@@ -18,16 +18,21 @@ body {
 #clock {
     color: rgba(255, 255, 255, 0.7);
     width: 100vw;
-    height: 150px;
+    height: 170px;
     text-align: center;
     z-index: 4;
-    font-size: 130px;
+    font-size: 140px;
     font-weight: bold;
     letter-spacing: 10px;
     font-family: 'El Messiri';
     text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px
 }
-
+@media screen and (max-width: 480px) {
+    #clock {
+        font-size: 26vw;
+        height: 32vw;
+    }
+}
 #search {
     width: 100vw;
     text-align: center;
@@ -36,7 +41,7 @@ body {
     font-size: 30px;
     font-weight: lighter;
     color: rgba(0,0,0,0);/*把游標和文字隱藏*/
-    text-shadow: 0px 0px 0px rgba(255,255,255,0.6);/*用陰影設定文字的顏色*/
+    text-shadow: 0 0 0 rgba(255,255,255,0.6);/*用陰影設定文字的顏色*/
     -webkit-text-fill-color: transparent;
     background-color: transparent;
 }
