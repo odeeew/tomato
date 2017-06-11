@@ -77,7 +77,7 @@ $(document).ready(function () {
 			navigator.webkitVibrate(1000);
 		}
 		function flash() {
-			$('#clock').fadeOut(500);
+			$('#mainContent').fadeOut(500);
 			$('#customAlert').fadeIn(500).fadeOut(500);
 		}
 
@@ -87,9 +87,12 @@ $(document).ready(function () {
 		}, 3000);
 
 		setTimeout(function() {
-			$('#clock').fadeIn(500);
+			$('#mainContent').fadeIn(500);
 		}, 6000);
 	}
+	$(document).on('keypress', function() {
+		$('#search').focus();
+	});
 });
 
 $('input').keyup(function(event){
