@@ -99,5 +99,6 @@ $('input').keyup(function(event){
 	if (event.which === 13) {// Enter 鍵的號碼是 13
 		var searchTerm = $('#search').val();
 		window.location.href= 'http://www.google.com/search?q=' + searchTerm;
-	}
+		//i'm felling lucky:http://www.google.com/search?btnI&q=
+    }
 });

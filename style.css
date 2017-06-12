@@ -1,6 +1,8 @@
 body {
     padding: 0;
     margin: 0;
+    width: 100vw;
+    height: 100vh;
     background: #ccc;
     font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
     background: url("https://source.unsplash.com/collection/148982/1920x1080");
@@ -22,7 +24,6 @@ body {
     width: 100vw;
     height: 170px;
     text-align: center;
-    z-index: 2;
     font-size: 140px;
     font-weight: bold;
     letter-spacing: 10px;
@@ -39,7 +40,6 @@ body {
     width: 100vw;
     text-align: center;
     border: 0;
-    z-index: 5;
     font-size: 30px;
     font-weight: lighter;
     color: rgba(0,0,0,0);/*把游標和文字隱藏*/
@@ -57,10 +57,6 @@ body {
     display: none;
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 4;
 }
 
 #customAlert p {
@@ -78,13 +74,14 @@ body {
 #footer::before {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -20px;
+    left:-15px;
     z-index: -1;
-    width: 100vw;
-    height: 115px;
-    background: -moz-linear-gradient(top,  transparent 0,rgba(0,0,0,0.5) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, transparent 0,rgba(0,0,0,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, transparent 0,rgba(0,0,0,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    width: calc(100vw + 30px);
+    height: 145px;
+    background: -moz-linear-gradient(top,  transparent 0,rgba(0,0,0,0.7) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, transparent 0,rgba(0,0,0,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, transparent 0,rgba(0,0,0,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
     filter: blur(15px);
 }
