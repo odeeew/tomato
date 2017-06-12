@@ -98,7 +98,10 @@ $(document).ready(function () {
 $('input').keyup(function(event){
 	if (event.which === 13) {// Enter 鍵的號碼是 13
 		var searchTerm = $('#search').val();
-		window.location.href= 'http://www.google.com/search?q=' + searchTerm;
-		//i'm felling lucky:http://www.google.com/search?btnI&q=
+		if (searchTerm.substr(0,3) === 'ifl') {
+			window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm.substr(4);
+		} else {
+            window.location.href = 'http://www.google.com/search?q=' + searchTerm;
+		}
     }
 });
