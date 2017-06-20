@@ -96,12 +96,10 @@ $(document).ready(function () {
 });
 
 $('input').keyup(function(event){
-	if (event.which === 13) {// Enter 鍵的號碼是 13
-		var searchTerm = $('#search').val();
-		if (searchTerm.substr(0,3) === 'ifl') {
-			window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm.substr(4);
-		} else {
-            window.location.href = 'http://www.google.com/search?q=' + searchTerm;
-		}
-    }
+    var searchTerm = $('#search').val();
+	if (event.shiftKey && event.which === 13) {// shift + Enter 鍵的號碼是 13
+        window.location.href = 'http://www.google.com/search?q=' + searchTerm;
+    } else if (event.altKey && event.which === 13) {//alt + Enter 好手氣
+        window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm;
+	}
 });
