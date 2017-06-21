@@ -27,7 +27,7 @@ body {
     font-weight: bold;
     letter-spacing: 10px;
     font-family: 'El Messiri';
-    text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px
+    text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px;
 }
 @media screen and (max-width: 480px) {
     #clock {
@@ -42,10 +42,11 @@ body {
     font-size: 30px;
     font-weight: lighter;
     color: rgba(0,0,0,0);/*把游標和文字隱藏*/
-    text-shadow: 0 0 0 rgba(255,255,255,0.6);/*用陰影設定文字的顏色*/
+    text-shadow: 0 0 0 rgba(255,255,255,0.65),0 0 20px rgba(0,0,0,0.2);/*用陰影設定文字的顏色*/
     -webkit-text-fill-color: transparent;
     background-color: transparent;
     -webkit-appearance: none;
+    word-spacing: 5px;
 }
 #search:focus {
     border: 0;
@@ -62,7 +63,7 @@ body {
     text-align: center;
     line-height: 100vh;
     font-size: 30px;
-    margin: 0
+    margin: 0;
 }
 #footer {
     position: absolute;
@@ -85,7 +86,7 @@ body {
     filter: blur(15px);
 }
 #counterDisplay {
-    /*opacity: 0.3;*/
     padding: 10px;
     color: rgba(255,255,255,0.4);
+    font-weight: 100;
 }
