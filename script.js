@@ -10,7 +10,10 @@ $(document).ready(function () {
 			mm = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
 //            ss = now.getSeconds();
 		document.getElementById('clock').innerHTML = hh + ':' + mm;
-		if (now.getHours() > 17 && now.getHours() < 19){
+
+		if (now.getHours() === 17) {
+            $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
+        } else if (now.getHours() > 17 && now.getHours() < 19){
 		    $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
         } else if (now.getHours() === 19){
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
