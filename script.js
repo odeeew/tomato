@@ -19,7 +19,7 @@ $(document).ready(function () {
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
         } else if (now.getHours() > 19 && now.getHours() < 23){
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
-        } else if (now.getHours() === 23){
+        } else if (now.getHours() === 23 || now.getHours() === 0){
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
         } else if (now.getHours() > 0 && now.getHours() < 4){
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
