@@ -111,9 +111,9 @@ $(document).ready(function () {
 	});
 });
 
-$('input').keyup(function(event){
+$('input').keypress(function(event){
     var searchTerm = $('#search').val();
-	if (event.shiftKey && event.which === 13) {// shift + Enter 鍵的號碼是 13
+	if (event.which === 13) {// shift + Enter 鍵的號碼是 13
         window.location.href = 'http://www.google.com/search?q=' + searchTerm;
     } else if (event.altKey && event.which === 13) {//alt + Enter 好手氣
         window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm;
