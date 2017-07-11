@@ -2,7 +2,6 @@
  * Created by Gary on 6/10.
  */
 $(document).ready(function () {
-
 	//show now time
 	function renewTime() {
 		var now = new Date(),
