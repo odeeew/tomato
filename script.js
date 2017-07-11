@@ -109,13 +109,6 @@ $(document).ready(function () {
 	$(document).on('keypress', function() {
 		$('#search').focus();
 	});
-
-	//BGM 播放功能
-    var bgm = setting.split('&',3)[2],
-        rNum = Math.floor(Math.random()*100+1);
-    if (bgm === 'bgm=1'){
-        $('#mainContent').append('<iframe width="200" height="113" src="https://www.youtube.com/embed/videoseries?list=PLwS-Zjyq1Jikzli2aJDeDCid3eXKGoVlO&amp;showinfo=0&autoplay=1&loop=1&index=' + rNum + '"></iframe>');
-    }
 });
 
 //處理按鍵輸入的事件
