@@ -11,7 +11,7 @@ $(document).ready(function () {
 //            ss = now.getSeconds();
 		document.getElementById('clock').innerHTML = hh + ':' + mm;
 
-		if (now.getHours() === 17) {
+		if (now.getHours() === 17) {//根據時間設定背景圖片
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
         } else if (now.getHours() > 17 && now.getHours() < 19){
 		    $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
@@ -85,7 +85,7 @@ $(document).ready(function () {
 		relaxCountdown--;
 	}
 
-	function customAlert(bgColor, textColor, text) {
+	function customAlert(bgColor, textColor, text) {//提示效果
 		$('#customAlert').css({'background-color': bgColor, 'color': textColor}).html('<p>' + text + '</p>');
 		if (navigator.vibrate) {
 			navigator.vibrate(1000);
@@ -109,8 +109,16 @@ $(document).ready(function () {
 	$(document).on('keypress', function() {
 		$('#search').focus();
 	});
+
+	//BGM 播放功能
+    var bgm = setting.split('&',3)[2],
+        rNum = Math.floor(Math.random()*100+1);
+    if (bgm === 'bgm=1'){
+        $('#mainContent').append('<iframe width="200" height="113" src="https://www.youtube.com/embed/videoseries?list=PLwS-Zjyq1Jikzli2aJDeDCid3eXKGoVlO&amp;showinfo=0&autoplay=1&loop=1&index=' + rNum + '"></iframe>');
+    }
 });
 
+//處理按鍵輸入的事件
 $('input').keypress(function(event){
     var searchTerm = $('#search').val();
 	if (event.altKey && event.which === 13) {// Enter 鍵的號碼是 13
