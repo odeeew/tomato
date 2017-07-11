@@ -116,6 +116,11 @@ $('input').keypress(function(event){
 	if (event.altKey && event.which === 13) {// Enter 鍵的號碼是 13
         window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm;//好手氣
     } else if (event.which === 13) {
-        window.location.href = 'http://www.google.com/search?q=' + searchTerm;
+	    var u = window.location.href;
+	    if(searchTerm === '#play'){
+            window.location.href = u + '?25&5&bgm=1';
+        } else {
+            window.location.href = 'http://www.google.com/search?q=' + searchTerm;
+        }
 	}
 });
