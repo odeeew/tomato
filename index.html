@@ -23,12 +23,8 @@
 </body>
 <script>
     //BGM 播放功能
-    var u = window.location.href,
-        setting = u.split('?', 2)[1],
-        bgm = setting.split('&',3)[2];
-
-    if (bgm === 'bgm=1'){
-
+    var u = window.location.href;
+    if (u.indexOf('bgm=1') != -1){
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -40,11 +36,12 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                height: '0',
-                width: '0',
+                height: '300',
+                width: '100',
                 index: '2',
                 events: {
-                    'onReady': onPlayerReady
+                    'onReady': onPlayerReady,
+                    'onStateChange': onStateChange
                 }
             });
         }
@@ -52,7 +49,7 @@
         // 4. The API will call this function when the video player is ready.
         function onPlayerReady(event) {
             var rNum = Math.floor(Math.random()*100);
-            player.loadPlaylist({
+            player.cuePlaylist({
                 'list': 'PLwS-Zjyq1Jikzli2aJDeDCid3eXKGoVlO',
                 'listType': 'playlist',
                 'index':rNum,
@@ -60,6 +57,11 @@
             });
             player.setShuffle(true);
             player.setLoop(true);
+        }
+        function onStateChange(event) {
+            if (event.data === 5){
+                player.playVideo();
+            }
         }
     }
 </script>

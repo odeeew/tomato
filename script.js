@@ -28,17 +28,27 @@ $(document).ready(function () {
     }
 	setInterval(renewTime, 1000);//update every second
 
-	//get setting from url
-	var u = window.location.href,
-		setting = u.split('?', 2)[1],
-		focusMin = parseInt(setting.split('&', 2)[0]),
-		relaxMin = setting.split('&', 2)[1],
-		focusCountdown = focusMin * 60,//分鐘數轉秒數
-		relaxCountdown = relaxMin * 60,
-		focusCountdownId,
-		relaxCountdownId,
-		x,
-		y;
+    var u = window.location.href;
+    if (u.indexOf('?') === -1){
+        window.location.href = u + '?timer=0:0&bgm=0';//參數預設值
+    } else {
+        var setting = u.split('?')[1],
+            timer = setting.split('&')[0],
+            timerValue = timer.split('=')[1],
+            focusMin = parseInt(timerValue.split(':')[0]),
+            relaxMin = parseInt(timerValue.split(':')[1]),
+            focusCountdown = focusMin * 60,//分鐘數轉秒數
+            relaxCountdown = relaxMin * 60,
+            focusCountdownId,
+            relaxCountdownId,
+            x,
+            y;
+        if (focusMin === 0){
+            $('#counterDisplay').hide();
+        } else {
+            initialFocusCountdown();
+        }
+    }
 
 	function initialFocusCountdown() {
 		x = document.getElementById("focusCountdown");
@@ -61,8 +71,6 @@ $(document).ready(function () {
 		}
 		focusCountdown--;
 	}
-
-	initialFocusCountdown();
 
 	function initialRelaxCountdown() {
 		y = document.getElementById("relaxCountdown");
@@ -116,9 +124,13 @@ $('input').keypress(function(event){
 	if (event.altKey && event.which === 13) {// Enter 鍵的號碼是 13
         window.location.href = 'http://www.google.com/search?btnI&q=' + searchTerm;//好手氣
     } else if (event.which === 13) {
-	    var u = window.location.href;
-	    if(searchTerm === '#play'){
-            window.location.href = u + '?25&5&bgm=1';
+        var u = window.location.href,
+            setting = u.split('?')[1];
+	    if (searchTerm === '#play'){//用指令播放 BGM
+            window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=0','bgm=1');
+        } else if (searchTerm.match('#timer=') != -1){//用指令開啟計時器
+	        var timer = searchTerm.split('#')[1];
+            window.location.href = u.split('?')[0] + '?' + timer + setting.split('&')[1];
         } else {
             window.location.href = 'http://www.google.com/search?q=' + searchTerm;
         }
