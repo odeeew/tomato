@@ -29,7 +29,7 @@ $(document).ready(function () {
 	setInterval(renewTime, 1000);//update every second
 
     var u = window.location.href;
-    if (u.indexOf('?') === -1){
+    if (u.indexOf('?') === -1){//沒有塞參數
         window.location.href = u + '?timer=0:0&bgm=0';//參數預設值
     } else {
         var setting = u.split('?')[1],
@@ -128,7 +128,7 @@ $('input').keypress(function(event){
             setting = u.split('?')[1];
 	    if (searchTerm === '#play'){//用指令播放 BGM
             window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=0','bgm=1');
-        } else if (searchTerm.match('#timer=') != -1){//用指令開啟計時器
+        } else if (searchTerm.indexOf('#timer=') != -1){//用指令開啟計時器
 	        var timer = searchTerm.split('#')[1];
             window.location.href = u.split('?')[0] + '?' + timer + setting.split('&')[1];
         } else {
