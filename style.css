@@ -30,7 +30,10 @@ body {
     font-family: 'El Messiri';
     text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 4px;
 }
-#mainContent iframe {display: none;}
+#mainContent iframe {
+    position: absolute;
+    left:-500px;
+}
 @media screen and (max-width: 480px) {
     #clock {
         font-size: 26vw;
