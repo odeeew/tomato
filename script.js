@@ -5,24 +5,20 @@ $(document).ready(function () {
 	//show now time
 	function renewTime() {
 		var now = new Date(),
-			hh = (now.getHours() < 10 ? '0' : '') + now.getHours(),//前面補0
+			h = now.getHours(),
+			hh = (h < 10 ? '0' : '') + h,//前面補0
 			mm = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
 //            ss = now.getSeconds();
 		document.getElementById('clock').innerHTML = hh + ':' + mm;
 
-		if (now.getHours() === 17) {//根據時間設定背景圖片
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
-        } else if (now.getHours() > 17 && now.getHours() < 19){
+        //根據時間設定背景圖片
+		if (h >= 17 && h <= 19){//傍晚
 		    $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
-        } else if (now.getHours() === 19){
+        } else if (h >= 20 && h <= 23){//晚上
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
-        } else if (now.getHours() > 19 && now.getHours() < 23){
+        } else if (h >= 0 && h < 4){//晚上
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
-        } else if (now.getHours() === 23 || now.getHours() === 0){
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
-        } else if (now.getHours() > 0 && now.getHours() < 4){
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
-        } else {
+        } else {//白天
             $('body').css({'background-image':'url("https://source.unsplash.com/collection/974604/1920x1080")'});
         }
     }
