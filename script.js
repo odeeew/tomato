@@ -124,7 +124,9 @@ $('input').keypress(function(event){
             setting = u.split('?')[1];
 	    if (searchTerm === '#play'){//用指令播放 BGM
             window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=0','bgm=1');
-        } else if (searchTerm.indexOf('#timer=') != -1){//用指令開啟計時器
+        }if(searchTerm === '#stop'){//用指令停止 BGM
+            window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=1','bgm=0');
+		} else if (searchTerm.indexOf('#timer=') != -1){//用指令開啟計時器
 	        var timer = searchTerm.split('#')[1];
             window.location.href = u.split('?')[0] + '?' + timer + setting.split('&')[1];
         } else {
