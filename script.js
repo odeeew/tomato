@@ -124,7 +124,7 @@ $('input').keypress(function(event){
             setting = u.split('?')[1];
 	    if (searchTerm === '#play'){//用指令播放 BGM
             window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=0','bgm=1');
-        }if(searchTerm === '#stop'){//用指令停止 BGM
+        }else if(searchTerm === '#stop'){//用指令停止 BGM
             window.location.href = u.split('?')[0] + '?' + setting.replace('bgm=1','bgm=0');
 		} else if (searchTerm.indexOf('#timer=') != -1){//用指令開啟計時器
 	        var timer = searchTerm.split('#')[1];
