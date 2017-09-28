@@ -13,13 +13,13 @@ $(document).ready(function () {
 
         //根據時間設定背景圖片
 		if (h >= 17 && h <= 19){//傍晚
-		    $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/1920x1080")'});
+		    $('body').css({'background-image':'url("https://source.unsplash.com/collection/977392/daily")'});
         } else if (h >= 20 && h <= 23){//晚上
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
+            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/daily")'});
         } else if (h >= 0 && h < 4){//晚上
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/1920x1080")'});
+            $('body').css({'background-image':'url("https://source.unsplash.com/collection/991244/daily")'});
         } else {//白天
-            $('body').css({'background-image':'url("https://source.unsplash.com/collection/974604/1920x1080")'});
+            $('body').css({'background-image':'url("https://source.unsplash.com/collection/974604/daily")'});
         }
     }
 	setInterval(renewTime, 1000);//update every second
